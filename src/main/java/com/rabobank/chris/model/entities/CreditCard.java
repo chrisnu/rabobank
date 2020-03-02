@@ -1,4 +1,4 @@
-package com.rabobank.chris.model;
+package com.rabobank.chris.model.entities;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.rabobank.chris.api;
 
-import com.rabobank.chris.model.DebitCard;
+import com.rabobank.chris.model.entities.DebitCard;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

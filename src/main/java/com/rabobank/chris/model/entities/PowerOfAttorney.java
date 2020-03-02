@@ -1,5 +1,6 @@
-package com.rabobank.chris.model;
+package com.rabobank.chris.model.entities;
 
+import com.rabobank.chris.model.CardReference;
 import com.rabobank.chris.model.enums.Authorization;
 import com.rabobank.chris.model.enums.Direction;
 import lombok.Data;

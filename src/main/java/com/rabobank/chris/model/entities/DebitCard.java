@@ -1,5 +1,6 @@
-package com.rabobank.chris.model;
+package com.rabobank.chris.model.entities;
 
+import com.rabobank.chris.model.Limit;
 import lombok.Data;
 
 @Data

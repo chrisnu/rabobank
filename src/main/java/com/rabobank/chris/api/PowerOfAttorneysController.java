@@ -1,6 +1,6 @@
 package com.rabobank.chris.api;
 
-import com.rabobank.chris.model.PowerOfAttorney;
+import com.rabobank.chris.model.entities.PowerOfAttorney;
 import com.rabobank.chris.model.PowerOfAttorneyReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
