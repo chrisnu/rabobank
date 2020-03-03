@@ -7,8 +7,12 @@ import java.util.Calendar;
 @Entity(name = "Account")
 @Table(name = "account")
 public class Account {
+
+    /**
+     * In order to use database auto incremental flag, we set the generation type to IDENTITY
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     @Column(nullable = false)

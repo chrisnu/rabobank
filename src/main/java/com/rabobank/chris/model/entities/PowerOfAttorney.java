@@ -12,6 +12,9 @@ import java.util.List;
 @Table(name = "power_of_attorney")
 public class PowerOfAttorney {
 
+    /**
+     * We are creating custom id generator where it generates numerical increment with 4 zeroes fill value
+     */
     @Id
     @Column(length = 4)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "poa_seq")
