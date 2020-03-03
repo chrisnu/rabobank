@@ -19,9 +19,9 @@ public class Account {
     @NotNull
     String owner;
 
-    @Column(length = 13, precision = 4, nullable = false)
+    @Column(length = 13, precision = 3, nullable = false)
     @NotNull
-    Double balance;
+    Float balance;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)

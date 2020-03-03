@@ -14,9 +14,9 @@ public class CardLimit {
     @GeneratedValue
     Integer id;
 
-    @Column(length = 13, precision = 4, nullable = false)
+    @Column(length = 13, precision = 3, nullable = false)
     @NotNull
-    Double value;
+    Float value;
 
     @Column(nullable = false)
     @NotNull
