@@ -16,7 +16,7 @@ public class CreditCardsController {
     @GetMapping(path = "{id}")
     public CreditCard getCreditCard(@PathVariable("id") String id) {
         var card = new CreditCard();
-        card.setId(id);
+//        card.setId(id);
         return card;
     }
 }

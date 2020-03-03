@@ -1,8 +1,15 @@
 package com.rabobank.chris.model.entities;
 
-import lombok.Data;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
-@Data
+@Entity(name = "CreditCard")
+@DiscriminatorValue("CREDIT_CARD")
 public class CreditCard  extends Card {
-    Integer monthlyLimit;
+
+    @Column(nullable = false, columnDefinition = "0")
+    @NotNull
+    boolean contactless = false;
 }

@@ -34,7 +34,7 @@ public class PowerOfAttorneysController {
     @GetMapping(path = "{id}")
     public PowerOfAttorney getPowerOfAttorney(@PathVariable("id") String id) {
         var p = new PowerOfAttorney();
-        p.setId(id);
+//        p.setId(id);
         return p;
     }
 }

@@ -1,17 +1,48 @@
 package com.rabobank.chris.model.entities;
 
-import com.rabobank.chris.model.CardReference;
 import com.rabobank.chris.model.enums.Authorization;
 import com.rabobank.chris.model.enums.Direction;
-import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
-@Data
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
+@Entity(name = "PowerOfAttorney")
+@Table(name = "power_of_attorney")
 public class PowerOfAttorney {
+
+    @Id
+    @Column(length = 4)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "poa_seq")
+    @GenericGenerator(
+            name = "poa_seq",
+            strategy = "com.rabobank.chris.model.generator.POASequenceGenerator"
+    )
     String id;
-    String grantor;
-    String grantee;
+
+    @ManyToOne
+    @NotNull
+    Account grantor;
+
+    @ManyToOne
+    @NotNull
+    Account grantee;
+
+    @Column(nullable = false)
+    @NotNull
     String account;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @NotNull
     Direction direction;
-    Authorization authorizations;
-    CardReference cards;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    Authorization authorization;
+
+    @OneToMany
+    List<Card> cards;
 }
