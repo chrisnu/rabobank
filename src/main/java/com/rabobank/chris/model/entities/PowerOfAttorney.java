@@ -1,6 +1,5 @@
 package com.rabobank.chris.model.entities;
 
-import com.rabobank.chris.model.enums.Authorization;
 import com.rabobank.chris.model.enums.Direction;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -41,10 +40,8 @@ public class PowerOfAttorney {
     @NotNull
     Direction direction;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    Authorization authorization;
+    @ManyToMany
+    List<Authorization> authorizations;
 
     @OneToMany
     List<Card> cards;
