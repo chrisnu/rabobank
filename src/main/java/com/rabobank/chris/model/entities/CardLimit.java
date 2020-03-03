@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 public class CardLimit {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     @Column(length = 13, precision = 3, nullable = false)

@@ -39,15 +39,6 @@ public class Card {
     @NotNull
     String cardHolder;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    CardLimit atmLimit;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    CardLimit posLimit;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    CardLimit creditLimit;
-
     @Column(nullable = false)
     @NotNull
     boolean contactless;
