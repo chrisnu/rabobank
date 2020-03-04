@@ -1,6 +1,7 @@
 package com.rabobank.chris.model.entities;
 
 import com.rabobank.chris.model.enums.CardStatus;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
         name = "card_type",
         columnDefinition = "ENUM('DEBIT_CARD', 'CREDIT_CARD')"
 )
+@Data
 public class Card {
 
     /**
@@ -20,26 +22,26 @@ public class Card {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    protected Integer id;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     @NotNull
-    CardStatus status;
+    protected CardStatus status;
 
     @Column(nullable = false)
     @NotNull
-    Integer cardNumber;
+    protected Integer cardNumber;
 
     @Column(nullable = false)
     @NotNull
-    Integer sequenceNumber;
+    protected Integer sequenceNumber;
 
     @Column(nullable = false)
     @NotNull
-    String cardHolder;
+    protected String cardHolder;
 
     @Column(nullable = false)
     @NotNull
-    boolean contactless;
+    protected Boolean contactless;
 }

@@ -1,5 +1,7 @@
 package com.rabobank.chris.model.entities;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Calendar;
@@ -13,21 +15,22 @@ public class Account {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
 
+    @Getter
     @Column(nullable = false)
     @NotNull
-    String owner;
+    private String owner;
 
     @Column(length = 13, precision = 3, nullable = false)
     @NotNull
-    Float balance;
+    private Float balance;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     @NotNull
-    Calendar created;
+    private Calendar created;
 
     @Temporal(TemporalType.DATE)
-    Calendar ended;
+    private Calendar ended;
 }

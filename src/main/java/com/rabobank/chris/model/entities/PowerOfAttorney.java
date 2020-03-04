@@ -1,6 +1,7 @@
 package com.rabobank.chris.model.entities;
 
 import com.rabobank.chris.model.enums.Direction;
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity(name = "PowerOfAttorney")
 @Table(name = "power_of_attorney")
+@Data
 public class PowerOfAttorney {
 
     /**
@@ -21,28 +23,28 @@ public class PowerOfAttorney {
             name = "poa_seq",
             strategy = "com.rabobank.chris.model.generator.POASequenceGenerator"
     )
-    String id;
+    private String id;
 
     @ManyToOne
     @NotNull
-    Account grantor;
+    private Account grantor;
 
     @ManyToOne
     @NotNull
-    Account grantee;
+    private Account grantee;
 
     @Column(nullable = false)
     @NotNull
-    String account;
+    private String account;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     @NotNull
-    Direction direction;
+    private Direction direction;
 
     @ManyToMany
-    List<Authorization> authorizations;
+    private List<Authorization> authorizations;
 
     @OneToMany
-    List<Card> cards;
+    private List<Card> cards;
 }

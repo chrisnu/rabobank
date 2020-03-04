@@ -1,19 +1,22 @@
 package com.rabobank.chris.model.entities;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import lombok.Getter;
+
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity(name = "DebittCard")
 @DiscriminatorValue("DEBIT_CARD")
 public class DebitCard extends Card {
 
     @OneToOne(cascade = CascadeType.ALL)
-    CardLimit atmLimit;
+    @Getter
+    private CardLimit atmLimit;
 
     @OneToOne(cascade = CascadeType.ALL)
-    CardLimit posLimit;
+    @Getter
+    private CardLimit posLimit;
 
-    @Column(nullable = false)
-    @NotNull
-    boolean contactless = true;
 }
