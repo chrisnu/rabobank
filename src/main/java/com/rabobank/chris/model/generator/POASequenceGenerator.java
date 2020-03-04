@@ -29,6 +29,10 @@ public class POASequenceGenerator extends SequenceStyleGenerator {
     public Serializable generate(SharedSessionContractImplementor session,
                                  Object object) throws HibernateException {
         Integer id = Integer.valueOf((Integer) super.generate(session, object));
+        return generateId(id);
+    }
+
+    protected String generateId(Integer id) {
         return String.format("%04d", id);
     }
 
