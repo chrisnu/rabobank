@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotBlank;
+
 @RequestMapping("credit-cards")
 @RestController
 public class CreditCardsController extends RestExceptionHandler {
@@ -26,9 +28,9 @@ public class CreditCardsController extends RestExceptionHandler {
     }
 
     @GetMapping(path = "/{id}")
-    public CreditCardDTO getCreditCard(@PathVariable("id") String id) {
+    public CreditCardDTO getCreditCard(@PathVariable("id") @NotBlank Integer id) {
         final CreditCard creditCard = creditCardService
-                .findById(Integer.valueOf(id))
+                .findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id, CreditCard.class));
 
         return modelMapper.map(creditCard, CreditCardDTO.class);

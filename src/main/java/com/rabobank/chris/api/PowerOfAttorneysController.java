@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +37,7 @@ public class PowerOfAttorneysController {
     }
 
     @GetMapping(path = "{id}")
-    public PowerOfAttorneyDTO getPowerOfAttorney(@PathVariable("id") String id) {
+    public PowerOfAttorneyDTO getPowerOfAttorney(@PathVariable("id") @Size(max = 4) String id) {
         final PowerOfAttorney powerOfAttorney = powerOfAttorneyService
                 .findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id, PowerOfAttorney.class));
