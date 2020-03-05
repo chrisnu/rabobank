@@ -9,10 +9,13 @@ import com.rabobank.chris.model.enums.AuthorizationValue;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
+@RunWith(SpringRunner.class)
 class PowerOfAttorneyDTOConverterTest {
 
     private ModelMapper modelMapper;
