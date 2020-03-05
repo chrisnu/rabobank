@@ -11,7 +11,7 @@ public class ApiErrorController implements ErrorController {
 
     @RequestMapping(value = "/error")
     public String genericError() {
-        return "Something went wrong";
+        return "Something went wrong. Check if the url is valid";
     }
 
     @Override
