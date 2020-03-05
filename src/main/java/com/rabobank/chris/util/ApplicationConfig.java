@@ -6,9 +6,12 @@ import com.rabobank.chris.model.converter.PowerOfAttorneyDTOConverter;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class ApplicationConfig {
+
+    private static final String EXTERNAL_API_ENDPOINT = "http://localhost:9090";
 
     @Bean
     public ModelMapper modelMapper() {
@@ -18,5 +21,10 @@ public class ApplicationConfig {
         modelMapper.addConverter(new PowerOfAttorneyDTOConverter());
 
         return modelMapper;
+    }
+
+    @Bean
+    public WebClient webClient() {
+        return WebClient.create(EXTERNAL_API_ENDPOINT);
     }
 }
