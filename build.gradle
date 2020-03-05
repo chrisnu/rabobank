@@ -37,7 +37,10 @@ dependencies {
 	}
 }
 
+bootRun {
+	main = 'com.rabobank.chris.ChrisApplication'
+}
+
 test {
-	maxParallelForks = 1
 	useJUnitPlatform()
 }
