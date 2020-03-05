@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 @RestController
 public class PowerOfAttorneysController {
 
-    private PowerOfAttorneyService powerOfAttorneyService;
-    private ModelMapper modelMapper;
+    private final PowerOfAttorneyService powerOfAttorneyService;
+    private final ModelMapper modelMapper;
 
     @Autowired
     public PowerOfAttorneysController(PowerOfAttorneyService powerOfAttorneyService, ModelMapper modelMapper) {
@@ -30,14 +30,14 @@ public class PowerOfAttorneysController {
 
     @GetMapping
     public List<PowerOfAttorneyReferencesDTO> getPowerOfAttorneys() {
-        return this.powerOfAttorneyService.findAll().stream()
+        return powerOfAttorneyService.findAll().stream()
                 .map(poa -> modelMapper.map(poa, PowerOfAttorneyReferencesDTO.class))
                 .collect(Collectors.toList());
     }
 
     @GetMapping(path = "{id}")
     public PowerOfAttorneyDTO getPowerOfAttorney(@PathVariable("id") String id) {
-        PowerOfAttorney powerOfAttorney = this.powerOfAttorneyService
+        final PowerOfAttorney powerOfAttorney = powerOfAttorneyService
                 .findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id, PowerOfAttorney.class));
 

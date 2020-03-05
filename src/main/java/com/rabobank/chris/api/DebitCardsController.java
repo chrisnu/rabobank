@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DebitCardsController {
 
-    private DebitCardService debitCardService;
-    private ModelMapper modelMapper;
+    private final DebitCardService debitCardService;
+    private final ModelMapper modelMapper;
 
     @Autowired
     public DebitCardsController(DebitCardService debitCardService, ModelMapper modelMapper) {
@@ -26,10 +26,10 @@ public class DebitCardsController {
 
     @GetMapping(path = "{id}")
     public DebitCardDTO getCreditCard(@PathVariable("id") String id) {
-        DebitCard debitCard = this.debitCardService
+        final DebitCard debitCard = debitCardService
                 .findById(Integer.valueOf(id))
                 .orElseThrow(() -> new EntityNotFoundException(id, DebitCard.class));
 
-        return this.modelMapper.map(debitCard, DebitCardDTO.class);
+        return modelMapper.map(debitCard, DebitCardDTO.class);
     }
 }

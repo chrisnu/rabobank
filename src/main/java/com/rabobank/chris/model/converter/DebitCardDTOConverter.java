@@ -11,8 +11,8 @@ public class DebitCardDTOConverter implements Converter<DebitCard, DebitCardDTO>
 
     @Override
     public DebitCardDTO convert(MappingContext<DebitCard, DebitCardDTO> context) {
-        DebitCard source = context.getSource();
-        DebitCardDTO destination = new DebitCardDTO();
+        final var source = context.getSource();
+        final var destination = new DebitCardDTO();
 
         destination.setId(source.getId());
         destination.setStatus(source.getStatus());
@@ -23,7 +23,7 @@ public class DebitCardDTOConverter implements Converter<DebitCard, DebitCardDTO>
 
         CardLimit atmLimit = source.getAtmLimit();
         if (atmLimit != null) {
-            CardLimitDTO cardLimitDTO = new CardLimitDTO();
+            var cardLimitDTO = new CardLimitDTO();
             cardLimitDTO.setLimit(atmLimit.getValue());
             cardLimitDTO.setPeriodUnit(atmLimit.getPeriodUnit());
             destination.setAtmLimit(cardLimitDTO);
@@ -31,7 +31,7 @@ public class DebitCardDTOConverter implements Converter<DebitCard, DebitCardDTO>
 
         CardLimit posLimit = source.getPosLimit();
         if (posLimit != null) {
-            CardLimitDTO cardLimitDTO = new CardLimitDTO();
+            var cardLimitDTO = new CardLimitDTO();
             cardLimitDTO.setLimit(posLimit.getValue());
             cardLimitDTO.setPeriodUnit(posLimit.getPeriodUnit());
             destination.setPosLimit(cardLimitDTO);

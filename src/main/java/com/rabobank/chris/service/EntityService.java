@@ -13,10 +13,10 @@ public abstract class EntityService<T, ID> {
     protected JpaRepository<T, ID> repository;
 
     public List<T> findAll() {
-        return this.repository.findAll();
+        return repository.findAll();
     }
 
     public Optional<T> findById(ID id) {
-        return this.repository.findById(id);
+        return repository.findById(id);
     }
 }

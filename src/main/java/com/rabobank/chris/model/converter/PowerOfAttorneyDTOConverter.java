@@ -17,7 +17,7 @@ public class PowerOfAttorneyDTOConverter implements Converter<PowerOfAttorney, P
     @Override
     public PowerOfAttorneyDTO convert(MappingContext<PowerOfAttorney, PowerOfAttorneyDTO> context) {
         PowerOfAttorney source = context.getSource();
-        PowerOfAttorneyDTO destination = new PowerOfAttorneyDTO();
+        var destination = new PowerOfAttorneyDTO();
 
         destination.setId(source.getId());
         destination.setGrantor(source.getGrantor().getOwner());

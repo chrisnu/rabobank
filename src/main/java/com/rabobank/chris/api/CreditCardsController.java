@@ -27,10 +27,10 @@ public class CreditCardsController extends RestExceptionHandler {
 
     @GetMapping(path = "/{id}")
     public CreditCardDTO getCreditCard(@PathVariable("id") String id) {
-        CreditCard creditCard = this.creditCardService
+        final CreditCard creditCard = creditCardService
                 .findById(Integer.valueOf(id))
                 .orElseThrow(() -> new EntityNotFoundException(id, CreditCard.class));
 
-        return this.modelMapper.map(creditCard, CreditCardDTO.class);
+        return modelMapper.map(creditCard, CreditCardDTO.class);
     }
 }
