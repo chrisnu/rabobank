@@ -7,47 +7,46 @@ import com.rabobank.chris.model.entities.Card;
 import com.rabobank.chris.model.entities.PowerOfAttorney;
 import com.rabobank.chris.model.enums.AuthorizationValue;
 import org.jeasy.random.EasyRandom;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-@RunWith(SpringRunner.class)
 class PowerOfAttorneyDTOConverterTest {
 
-    private ModelMapper modelMapper;
+    PowerOfAttorney poa;
+    PowerOfAttorneyDTO dto;
 
     @BeforeEach
     void setup() {
         var powerOfAttorneyDTOConverter = new PowerOfAttorneyDTOConverter();
-        modelMapper = new ModelMapper();
+        var modelMapper = new ModelMapper();
         modelMapper.addConverter(powerOfAttorneyDTOConverter);
+
+        poa = new EasyRandom().nextObject(PowerOfAttorney.class);
+        dto = modelMapper.map(poa, PowerOfAttorneyDTO.class);
     }
 
     @Test
-    void convert() {
-        var poa = new EasyRandom().nextObject(PowerOfAttorney.class);
-        var map = modelMapper.map(poa, PowerOfAttorneyDTO.class);
+    void convertTest() {
+        Assertions.assertEquals(dto.getId(), poa.getId());
+        Assertions.assertEquals(dto.getAccount(), poa.getAccount());
+        Assertions.assertEquals(dto.getDirection(), poa.getDirection());
+        Assertions.assertEquals(dto.getGrantee(), poa.getGrantee().getOwner());
+        Assertions.assertEquals(dto.getGrantor(), poa.getGrantor().getOwner());
 
-        assert map.getId().equals(poa.getId());
-        assert map.getAccount().equals(poa.getAccount());
-        assert map.getDirection().equals(poa.getDirection());
-        assert map.getGrantee().equals(poa.getGrantee().getOwner());
-        assert map.getGrantor().equals(poa.getGrantor().getOwner());
-
-        AuthorizationValue existingAuth = map.getAuthorizations().get(0);
+        AuthorizationValue existingAuth = dto.getAuthorizations().get(0);
         Optional<Authorization> firstAuth = poa.getAuthorizations().stream()
                 .filter(p -> p.getValue().equals(existingAuth))
                 .findFirst();
-        assert firstAuth.isPresent();
+        Assertions.assertTrue(firstAuth.isPresent());
 
-        CardReferenceDTO cardReferenceDTO = map.getCards().get(0);
+        CardReferenceDTO cardReferenceDTO = dto.getCards().get(0);
         Optional<Card> firstCard = poa.getCards().stream()
                 .filter(c -> c.getId().equals(cardReferenceDTO.getId()))
                 .findFirst();
-        assert firstCard.isPresent();
+        Assertions.assertTrue(firstCard.isPresent());
     }
 }
