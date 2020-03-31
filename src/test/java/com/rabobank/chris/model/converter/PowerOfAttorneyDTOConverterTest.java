@@ -30,7 +30,7 @@ class PowerOfAttorneyDTOConverterTest {
     }
 
     @Test
-    void convertTest() {
+    void testConvert() {
         Assertions.assertEquals(dto.getId(), poa.getId());
         Assertions.assertEquals(dto.getAccount(), poa.getAccount());
         Assertions.assertEquals(dto.getDirection(), poa.getDirection());

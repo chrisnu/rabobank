@@ -24,7 +24,7 @@ class CreditCardDTOConverterTest {
     }
 
     @Test
-    void convertTest() {
+    void testConvert() {
         Assertions.assertEquals(dto.getId(), creditCard.getId());
         Assertions.assertEquals(dto.getCardHolder(), creditCard.getCardHolder());
         Assertions.assertEquals(dto.getCardNumber(), creditCard.getCardNumber());
