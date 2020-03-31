@@ -15,7 +15,7 @@ class AccountTest {
     private static final float EXPECTED_CREATED_MONTH = 0;
     private static final float EXPECTED_CREATED_DAY = 1;
 
-    Account account;
+    private Account account;
 
     @BeforeEach
     public void setUp() {

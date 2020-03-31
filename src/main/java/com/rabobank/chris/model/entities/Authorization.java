@@ -9,8 +9,17 @@ import javax.persistence.*;
 @Table(name = "authorization")
 public class Authorization {
 
+    protected Authorization() {
+    }
+
+    public Authorization(Integer id, AuthorizationValue value) {
+        this.id = id;
+        this.value = value;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private Integer id;
 
     @Column(nullable = false, unique = true, length = 20)
