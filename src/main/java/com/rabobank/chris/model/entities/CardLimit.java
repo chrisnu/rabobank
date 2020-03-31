@@ -11,8 +11,19 @@ import javax.validation.constraints.NotNull;
 @Table(name = "card_limit")
 public class CardLimit {
 
+    protected CardLimit() {
+    }
+
+    public CardLimit(Integer id, float value, PeriodUnit periodUnit, LimitType type) {
+        this.id = id;
+        this.value = value;
+        this.periodUnit = periodUnit;
+        this.type = type;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private Integer id;
 
     @Column(length = 13, precision = 3, nullable = false)
@@ -28,5 +39,6 @@ public class CardLimit {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
+    @Getter
     private LimitType type;
 }

@@ -18,7 +18,7 @@ class AuthorizationTest {
     }
 
     @Test
-    public void testAuthrization() {
+    public void testAuthorization() {
         Assertions.assertEquals(EXPECTED_ID, authorization.getId());
         Assertions.assertEquals(EXPECTED_VALUE, authorization.getValue());
     }
