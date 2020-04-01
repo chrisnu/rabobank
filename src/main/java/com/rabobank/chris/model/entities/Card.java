@@ -2,6 +2,7 @@ package com.rabobank.chris.model.entities;
 
 import com.rabobank.chris.model.enums.CardStatus;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,26 +23,32 @@ public class Card {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     protected Integer id;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     @NotNull
+    @Getter
     protected CardStatus status;
 
     @Column(nullable = false)
     @NotNull
+    @Getter
     protected Integer cardNumber;
 
     @Column(nullable = false)
     @NotNull
+    @Getter
     protected Integer sequenceNumber;
 
     @Column(nullable = false)
     @NotNull
+    @Getter
     protected String cardHolder;
 
     @Column(nullable = false)
     @NotNull
+    @Getter
     protected Boolean contactless;
 }

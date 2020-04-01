@@ -21,7 +21,7 @@ class CardLimitTest {
     }
 
     @Test
-    public void testAuthorization() {
+    public void testCardLimit() {
         Assertions.assertEquals(EXPECTED_ID, cardLimit.getId());
         Assertions.assertEquals(EXPECTED_VALUE, cardLimit.getValue());
         Assertions.assertEquals(EXPECTED_PERIOD_UNIT, cardLimit.getPeriodUnit());
