@@ -13,6 +13,18 @@ import java.util.List;
 @Data
 public class PowerOfAttorney {
 
+    protected PowerOfAttorney() {
+    }
+
+    public PowerOfAttorney(String id, Account grantor, Account grantee, Direction direction, List<Authorization> authorizations, List<Card> cards) {
+        this.id = id;
+        this.grantor = grantor;
+        this.grantee = grantee;
+        this.direction = direction;
+        this.authorizations = authorizations;
+        this.cards = cards;
+    }
+
     /**
      * We are creating custom id generator where it generates numerical increment with 4 zeroes fill value
      */
