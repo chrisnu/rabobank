@@ -27,7 +27,7 @@ class CreditCardTest {
     }
 
     @Test
-    public void testCardLimit() {
+    public void testCreditCard() {
         Assertions.assertEquals(EXPECTED_ID, creditCard.getId());
         Assertions.assertEquals(EXPECTED_STATUS, creditCard.getStatus());
         Assertions.assertEquals(EXPECTED_NUMBER, creditCard.getCardNumber());
